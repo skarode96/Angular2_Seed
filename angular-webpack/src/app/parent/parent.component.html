@@ -1,0 +1,7 @@
+<p>
+  Parent -
+  {{incomingData}}
+</p>
+<input type="text" [(ngModel)]="textData"/>
+<button (click)="passDataToChild();"> Click Me</button><br>
+<my-child [event]="outgoingData" (eventClick)="handleEventClicked($event)"> </my-child>
