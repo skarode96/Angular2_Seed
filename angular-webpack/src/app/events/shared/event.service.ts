@@ -1,6 +1,7 @@
 
 
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class EventService {
@@ -24,5 +25,14 @@ export class EventService {
         format: 'InPerson'
       }
     ];
+  }
+
+  getEventsAsynchronously() {
+    let subject = new Subject();
+    setTimeout(() => {
+      subject.next(this.getEvents());
+      subject.complete();
+    }, 2000);
+    return subject;
   }
 }

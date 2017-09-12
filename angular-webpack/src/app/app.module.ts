@@ -20,6 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateEventComponent } from './events/shared/create-event.component';
 import { Error404Component } from './errors/404.component';
 import { EventRouteActivator } from './events/shared/event-route-activator.service';
+import {EventListResolver} from "./events/shared/event-list-resolver";
 
 
 @NgModule({
@@ -45,7 +46,9 @@ import { EventRouteActivator } from './events/shared/event-route-activator.servi
     ApiService,
     EventService,
     EventRouteActivator,
-    {provide: 'canDeactivateCreateEvent',
+    EventListResolver,
+    {
+      provide: 'canDeactivateCreateEvent',
       useValue: checkDirtyState
       // useValue: () => { return true; }
     }

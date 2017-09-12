@@ -23,18 +23,20 @@ export class EventsListComponent implements OnInit {
     this.toastr.setRootViewContainerRef(vcr);
   }
   ngOnInit() {
-    this.actualEvents = this.eventService.getEvents();
+    // this.eventService.getEventsAsynchronously().subscribe(events => {
+    //   this.actualEvents = events;
+    //   this.events = events;
+    // });
+    // this.actualEvents = this.eventService.getEvents();
+    this.actualEvents = this.activatedRoute.snapshot.data['events'];
+    this.events = this.actualEvents
     this.activatedRoute.params.subscribe(params => {
       this.id = params[ 'id' ];
       this.events = this.actualEvents;
-      console.log(this.id);
       console.log(this.events);
-      console.log('<<== After');
       if (this.id > 0) {
         this.events = [this.events[(this.id) - 1]];
       }
-      console.log('Before ===>');
-      console.log(this.events);
     });
   }
 
