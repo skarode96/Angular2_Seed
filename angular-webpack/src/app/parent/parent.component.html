@@ -1,7 +1,14 @@
-<p>
-  Parent -
-  {{incomingData}}
-</p>
-<input type="text" [(ngModel)]="textData"/>
-<button (click)="passDataToChild();"> Click Me</button><br>
-<my-child [event]="outgoingData" (eventClick)="handleEventClicked($event)"> </my-child>
+<div>
+  <p>
+    Parent -
+    {{incomingData}}
+  </p>
+  <input type="text" [(ngModel)]="textData" class="text-center"/>
+  <button class="submit-btn" (click)="passDataToChild();"> Click Me</button><br>
+  <h3>{{child.childVar}}</h3>
+  <h3>{{event?.name}}</h3>
+  <my-child #child [event]="outgoingData" (eventClick)="handleEventClicked($event)"></my-child>
+  <button class="submit-btn" (click)="child.logFoo()">callChildMethodFromParent</button>
+
+
+</div>

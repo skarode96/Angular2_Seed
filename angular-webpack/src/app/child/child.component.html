@@ -1,7 +1,9 @@
 <script src="child.component.ts"></script>
 <p> Child -
   {{event}}<br>
-  <input type="text" [(ngModel)]="sendToParent">
-  <button (click)="handleClickMe()">SendFromChild</button><br>
+  <input type="text" [(ngModel)]="sendToParent" class="text-center">
+  <button class="submit-btn" (click)="handleClickMe()">SendFromChild</button><br>
+  <button class="submit-btn" (click)="changeChildVar()">ChangeChildVar</button>
 
 </p>
+  <!--<h1>{{parentVar}}</h1>-->

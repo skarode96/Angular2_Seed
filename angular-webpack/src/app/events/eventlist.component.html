@@ -1,0 +1,31 @@
+<!--<link href="node_modules/ng2-toastr/bundles/ng2-toastr.min.css" rel="stylesheet" />-->
+<!--<script src="node_modules/ng2-toastr/bundles/ng2-toastr.min.js"></script>-->
+
+<span class="tooltip-toggle" data-tooltip="events">
+    Hover over this
+</span><br>
+<button class="btn-default" (click)="showSuccess()" >Toastr Tester</button>
+<div>
+  <div  *ngFor="let event of events" class="col-md-6 tooltip-toggle" data-tooltip="event.name" style="height: 191px">
+    <div [routerLink]="['/event',event.id]">
+      <h2 class="text-dark">{{event.name}}</h2>
+      <span [ngSwitch]="event.format">
+      <span *ngSwitchCase="'InPerson'" class="label label-warning">In-Person</span>
+      <span *ngSwitchCase="'Online'" class="label label-warning">Online</span>
+      <span *ngSwitchDefault class="label label-warning">TBD</span>
+    </span>
+      <div class="text">Date: {{event.date}}</div>
+      <!--<div [ngClass]="{green:event?.time === '8am',bold:event?.time === '8am'}" [ngSwitch]="event?.time">Time: {{event.time}}</div>-->
+      <div [ngClass]="'green bold'" [ngSwitch]="event?.time">Time: {{event.time}}</div>
+      <!--<div *ngIf="event.location">-->
+      <div [hidden]="!event?.location">
+        <span class="text">Location: {{event?.location?.address}}</span>
+        <span class="pad-left text">{{event?.location?.city}}, {{event?.location?.country}}</span>
+      </div>
+      <div class="text" *ngIf="event.onlineUrl">
+        Online URL: {{event?.onlineUrl}}
+      </div>
+    </div>
+  </div>
+
+</div>
