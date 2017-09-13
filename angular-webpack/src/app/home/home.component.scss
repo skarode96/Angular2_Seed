@@ -1,4 +1,19 @@
 // component styles are encapsulated and only applied to their components
-* {
-  color: #FFEF00;
+
+:host {
+  display: block;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+h2 {
+  color: purple;
+}
+h1 {
+  color: darkred;
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../shared/api.service';
 
 @Component({
   selector: 'my-home',
@@ -6,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() {
-    // Do stuff
+  title;
+  constructor(private api: ApiService) {
+    this.title = this.api.title;
   }
 
   ngOnInit() {
