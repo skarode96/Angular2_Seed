@@ -20,8 +20,10 @@
         <li><a [routerLink]="['event/create']">Create Event</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li>
+          <a *ngIf="!auth.isAuthenticated()" [routerLink]="['user/login']"><span class="glyphicon glyphicon-log-in"></span> Login </a>
+          <a *ngIf="auth.isAuthenticated()" [routerLink]="['user/profile']"><span class="glyphicon glyphicon-user"></span> Welcome {{auth.currentUser.firstName}} </a>
+        </li>
       </ul>
     </div>
   </nav>

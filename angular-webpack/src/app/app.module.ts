@@ -20,7 +20,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateEventComponent } from './events/shared/create-event.component';
 import { Error404Component } from './errors/404.component';
 import { EventRouteActivator } from './events/shared/event-route-activator.service';
-import {EventListResolver} from "./events/shared/event-list-resolver";
+import { EventListResolver } from './events/shared/event-list-resolver';
+import { AuthService } from './user/auth.service';
+
 
 
 @NgModule({
@@ -45,6 +47,7 @@ import {EventListResolver} from "./events/shared/event-list-resolver";
   providers: [
     ApiService,
     EventService,
+    AuthService,
     EventRouteActivator,
     EventListResolver,
     {

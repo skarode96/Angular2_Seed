@@ -11,6 +11,7 @@ import * as events from 'events';
 import { EventListResolver } from './events/shared/event-list-resolver';
 
 
+
 const routes: Routes = [
   { path: 'event/create', component: CreateEventComponent, canDeactivate: [ 'canDeactivateCreateEvent' ] },
   { path: 'home', component: HomeComponent },
@@ -19,7 +20,13 @@ const routes: Routes = [
   { path: 'event/:id' , canActivate: [EventRouteActivator] , component: EventsListComponent, resolve: { events: EventListResolver } },
   { path: 'parent', component: ParentComponent},
   { path: 'error', component: Error404Component},
+  { path: 'user', loadChildren: () => new Promise(function (resolve) {
+    (require as any).ensure([], function (require: any) {
+        resolve(require('./user/user.module')['UserModule']);
+      });
+    })
+  },
   {path: '', redirectTo: 'home' , pathMatch: 'full' },
 ];
-
 export const routing = RouterModule.forRoot(routes);
+
