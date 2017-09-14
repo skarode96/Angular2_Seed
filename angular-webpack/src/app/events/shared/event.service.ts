@@ -5,8 +5,10 @@ import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class EventService {
-  getEvents() {
-    return [
+  private events: any;
+
+  constructor() {
+    this.events = [
       { id: 1,
         name: 'Angular Connect',
         date: '9/26/2036',
@@ -25,6 +27,25 @@ export class EventService {
         format: 'InPerson'
       }
     ];
+  }
+
+  addEvents(event: any) {
+    this.events.push(event);
+  }
+  getLastEventNumber() {
+    return this.events.length;
+  }
+  getDummyEvent(){
+    return {
+      name: 'UN Angular Summit',
+      date: '6/10/2037',
+      time: '8am',
+      location: {address: 'The UN Angular Center', city: 'New York', country: 'USA'},
+      format: 'InPerson'
+    };
+  }
+  getEvents() {
+    return this.events;
   }
 
   getEventsAsynchronously() {

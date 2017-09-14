@@ -1,7 +1,7 @@
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastModule } from 'ng2-toastr';
 
 
@@ -30,6 +30,7 @@ import { AuthService } from './user/auth.service';
     BrowserModule,
     HttpModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     ToastModule.forRoot(),
     routing,
