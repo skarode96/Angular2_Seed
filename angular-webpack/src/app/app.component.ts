@@ -4,6 +4,7 @@ import { ApiService } from './shared';
 
 import '../style/app.scss';
 import {AuthService} from "./user/auth.service";
+import { EventService } from './events/shared/event.service';
 
 @Component({
   selector: 'my-app', // <my-app></my-app>
@@ -13,7 +14,9 @@ import {AuthService} from "./user/auth.service";
 export class AppComponent {
   url = 'https://github.com/preboot/angular2-webpack';
   title: string;
+  events: any;
 
-  constructor( private auth: AuthService) {
+  constructor( private auth: AuthService, private eventService: EventService ) {
+    this.events = eventService.getEvents();
   }
 }

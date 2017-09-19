@@ -22,6 +22,7 @@ import { Error404Component } from './errors/404.component';
 import { EventRouteActivator } from './events/shared/event-route-activator.service';
 import { EventListResolver } from './events/shared/event-list-resolver';
 import { AuthService } from './user/auth.service';
+import { MaterialModule } from './material.module';
 
 
 
@@ -32,6 +33,7 @@ import { AuthService } from './user/auth.service';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    MaterialModule,
     ToastModule.forRoot(),
     routing,
   ],

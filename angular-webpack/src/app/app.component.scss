@@ -8,10 +8,17 @@
 
 header {
   position: fixed;
+  background-color: #8c9def;
   top: 0;
   left: 0;
   width: 100%;
 }
+
+
+.mat-elevation-z16 {
+  z-index: 2;
+}
+
 
 h2 {
   color: purple;

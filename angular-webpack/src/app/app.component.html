@@ -1,31 +1,31 @@
-<header>
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">Angular Webpack</a>
-      </div>
-      <ul class="nav navbar-nav">
-        <li><a [routerLink]="['']">Home</a></li>
-        <li><a [routerLink]="['about']">About</a></li>
-        <li><a [routerLink]="['parent']">Parent</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown">Events <span class="caret" href="#"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#" [routerLink]="['event/0']">Events</a></li>
-            <li><a href="#" [routerLink]="['event/1']">Event 1</a></li>
-            <li><a href="#" [routerLink]="['event/2']">Event 2</a></li>
-            <li><a href="#" [routerLink]="['event/3']">Event 3</a></li>
-          </ul>
-        </li>
-        <li><a [routerLink]="['event/create']">Create Event</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a *ngIf="!auth.isAuthenticated()" [routerLink]="['user/login']"><span class="glyphicon glyphicon-log-in"></span> Login </a>
-          <a *ngIf="auth.isAuthenticated()" [routerLink]="['user/profile']"><span class="glyphicon glyphicon-user"></span> Welcome {{auth.currentUser.firstName}} </a>
-        </li>
-      </ul>
-    </div>
+<header class="mat-elevation-z16">
+  <nav md-tab-nav-bar>
+    <a md-tab-link
+       [routerLink]="['']">
+      Home
+    </a>
+    <a md-tab-link
+       [routerLink]="['about']">
+      About
+    </a>
+    <a md-tab-link
+       [routerLink]="['parent']">
+      Parent
+    </a>
+    <a md-tab-link [mdMenuTriggerFor]="menu" >
+      Events
+      <md-menu #menu="mdMenu">
+        <div><a  md-menu-item routerLink="event/0" >Events</a></div>
+        <div *ngFor="let event of events"><a  md-menu-item routerLink="event/{{event.id}}" >Event {{event.id}}</a></div>
+      </md-menu>
+    </a>
+    <a md-tab-link
+       [routerLink]="['event/create']">
+      Create Event
+    </a>
+
+    <a md-tab-link  *ngIf="!auth.isAuthenticated()" [routerLink]="['user/login']"><span class="glyphicon glyphicon-log-in"></span> Login </a>
+    <a md-tab-link *ngIf="auth.isAuthenticated()" [routerLink]="['user/profile']"><span class="glyphicon glyphicon-user"></span> Welcome {{auth.currentUser.firstName}} </a>
   </nav>
 </header>
 <main>

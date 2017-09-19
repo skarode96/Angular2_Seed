@@ -1,13 +1,22 @@
 <!--<link href="node_modules/ng2-toastr/bundles/ng2-toastr.min.css" rel="stylesheet" />-->
 <!--<script src="node_modules/ng2-toastr/bundles/ng2-toastr.min.js"></script>-->
 
-<span class="tooltip-toggle" data-tooltip="events">
-    Hover over this
-</span><br>
-<button class="btn-default" (click)="showSuccess()" >Toastr Tester</button>
+<md-card>
+  <div>
+      <span mdTooltip="Hover over me !" >
+        Hover over this
+      </span><br>
+    <button mdTooltip="get a toast" md-raised-button (click)="showWarning()" >Toastr Tester</button>
+
+  </div>
+
+
+</md-card>
+
+
 <div>
-  <div  *ngFor="let event of events" class="col-md-6 tooltip-toggle" data-tooltip="event.name" style="height: 191px">
-    <div [routerLink]="['/event',event.id]">
+  <md-card  *ngFor="let event of events" class="col-md-6" mdTooltip="{{event.name}}"  style="height: 191px">
+    <div  [routerLink]="['/event',event.id]">
       <h2 class="text-dark">{{event.name}}</h2>
       <span [ngSwitch]="event.format">
       <span *ngSwitchCase="'InPerson'" class="label label-warning">In-Person</span>
@@ -26,6 +35,6 @@
         Online URL: {{event?.onlineUrl}}
       </div>
     </div>
-  </div>
-
+  </md-card>
 </div>
+
